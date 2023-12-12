@@ -1,7 +1,6 @@
 import React from "react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-<script src="../path/to/flatpickr.min.js"></script>
 
 function Patients() {
   return (
@@ -102,63 +101,86 @@ function Patients() {
         >
           {(close) => (
             <div className="text-center items-center">
-              <div className="header "> Add new patients </div>
+              <div className="text-blue-600 text-xl font-bold mb-4">
+                {" "}
+                Add new patients{" "}
+              </div>
               <div className="content">
                 <form class="w-full">
-                  <div class="flex mx-3 mb-6">
-                  <button type="button" class="right-0 top-0 absolute bg-white rounded-md p-2 text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-              <span class="sr-only">Close menu</span>
-              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" onClick={() => {
-                    console.log("modal closed ");
-                    close();
-                  }}>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
+                  <div class="flex flex-wrap mx-3 mb-6">
+                    <button
+                      type="button"
+                      class="right-0 top-0 absolute rounded-md p-2 text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                    >
+                      <span class="sr-only">Close menu</span>
+                      <svg
+                        class="h-6 w-6"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                        onClick={() => {
+                          console.log("modal closed ");
+                          close();
+                        }}
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                       <label
                         class="block uppercase justify-center tracking-wide text-gray-700 text-xs font-bold mb-2"
-                        for="grid-first-name"
+                        for="firstname"
                       >
                         First Name
                       </label>
                       <input
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                        id="grid-first-name"
+                        id="firstname"
                         type="text"
-                        placeholder="Jane"
+                        placeholder="Johhny"
                       />
                     </div>
                     <div class="w-full md:w-1/2 px-3">
                       <label
                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                        for="grid-last-name"
+                        for="lastname"
                       >
                         Last Name
                       </label>
                       <input
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-last-name"
+                        id="lastname"
                         type="text"
-                        placeholder="Doe"
+                        placeholder="Sins"
                       />
                     </div>
                   </div>
                   <div class="flex flex-wrap mx-3 mb-6">
-                    <div class="w-1/3 px-3">
+                    <div class="w-1/4 px-3">
                       <label
                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                        for="grid-password"
+                        for="dateofbirth"
                       >
                         Date of birth
                       </label>
-                      <input datetimepicker class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-gray-500 focus:outline-none" type="date" placeholder="Please select a date" />
+                      <input
+                        datetimepicker
+                        class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-gray-500 focus:outline-none"
+                        type="date"
+                        placeholder="Please select a date"
+                        id="dateofbirth"
+                      />
                       <p class="text-gray-600 text-xs italic">
                         Make it as long and as crazy as you'd like
                       </p>
                     </div>
-                  </div>
-                  <div class="flex flex-wrap mx-3 mb-8">                                      
                     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                       <label
                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -172,8 +194,9 @@ function Patients() {
                         type="text"
                         placeholder="(+66)"
                       />
-                      
                     </div>
+                  </div>
+                  <div class="flex flex-wrap mx-3 mb-8">                    
                     <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                       <label
                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -214,8 +237,8 @@ function Patients() {
                         type="text"
                         placeholder="kg."
                       />
-                      </div>
-                      <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
+                    </div>
+                    <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                       <label
                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                         for="height"
@@ -228,23 +251,14 @@ function Patients() {
                         type="text"
                         placeholder="cm."
                       />
-                      </div>
+                    </div>
                   </div>
                 </form>
               </div>
-              <div className="actions">
-                <Popup
-                  trigger={<button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-lg"> Submit </button>}
-                  position="top center"
-                  nested
-                >
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Beatae magni omnis delectus nemo, maxime molestiae dolorem
-                    numquam mollitia, voluptate ea, accusamus excepturi deleniti
-                    ratione sapiente! Laudantium, aperiam doloribus. Odit, aut.
-                  </span>
-                </Popup>
+              <div className="actions">     
+                    <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white mb-4 py-2 px-4 border border-blue-500 hover:border-transparent rounded-lg">                     
+                      Submit
+                    </button>
               </div>
             </div>
           )}
