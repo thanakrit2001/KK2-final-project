@@ -152,13 +152,13 @@ function Patients() {
                       >
                         Date of birth
                       </label>
-                      <input datetimepicker class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" type="text" placeholder="Please select a date" />
+                      <input datetimepicker class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-gray-500 focus:outline-none" type="date" placeholder="Please select a date" />
                       <p class="text-gray-600 text-xs italic">
                         Make it as long and as crazy as you'd like
                       </p>
                     </div>
                   </div>
-                  <div class="flex flex-wrap mx-3 mb-2">                                      
+                  <div class="flex flex-wrap mx-3 mb-8">                                      
                     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                       <label
                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
