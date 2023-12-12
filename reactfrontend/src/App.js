@@ -1,12 +1,17 @@
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Patients from './views/patients';
-import Login from './views/logIn'
-import Home from './views/home'
+import Login from './views/logIn';
+import Home from './views/home';
 
 function App() {
   return (
-    // <Patients/>
-    <Login/>
-    // <Home/>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/contact" element={<Patients />} />
+      </Routes>
+    </Router>
   );
 }
 
