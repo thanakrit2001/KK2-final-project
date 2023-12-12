@@ -1,4 +1,7 @@
-import React from 'react'
+import React from "react";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+<script src="../path/to/flatpickr.min.js"></script>
 
 function Patients() {
   return (
@@ -85,8 +88,178 @@ function Patients() {
           </tbody>
         </table>
       </div>
+
+      <div className="absolute bottom-0">
+        <Popup
+          trigger={
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              {" "}
+              Add Patients{" "}
+            </button>
+          }
+          modal
+          nested
+        >
+          {(close) => (
+            <div className="text-center items-center">
+              <div className="header "> Add new patients </div>
+              <div className="content">
+                <form class="w-full max-w-lg">
+                  <div class="flex flex-wrap -mx-3 mb-6">
+                  <button type="button" class="right-0 top-0 absolute bg-white rounded-md p-2 text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+              <span class="sr-only">Close menu</span>
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" onClick={() => {
+                    console.log("modal closed ");
+                    close();
+                  }}>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                      <label
+                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="grid-first-name"
+                      >
+                        First Name
+                      </label>
+                      <input
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        id="grid-first-name"
+                        type="text"
+                        placeholder="Jane"
+                      />
+                    </div>
+                    <div class="w-full md:w-1/2 px-3">
+                      <label
+                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="grid-last-name"
+                      >
+                        Last Name
+                      </label>
+                      <input
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="grid-last-name"
+                        type="text"
+                        placeholder="Doe"
+                      />
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap -mx-3 mb-6">
+                    <div class="w-full px-3">
+                      <label
+                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="grid-password"
+                      >
+                        Date of birth
+                      </label>
+                      <input datetimepicker class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" type="text" placeholder="Please select a date" />
+                      <p class="text-gray-600 text-xs italic">
+                        Make it as long and as crazy as you'd like
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap -mx-3 mb-2">
+                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                      <label
+                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="grid-city"
+                      >
+                        City
+                      </label>
+                      <input
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        id="grid-city"
+                        type="text"
+                        placeholder="Albuquerque"
+                      />
+                    </div>
+                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                      <label
+                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="grid-state"
+                      >
+                        Gender
+                      </label>
+                      <div class="relative">
+                        <select
+                          class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                          id="grid-state"
+                        >
+                          <option>Male</option>
+                          <option>Female</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                          <svg
+                            class="fill-current h-4 w-4"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                      <label
+                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="phone"
+                      >
+                        Phone number
+                      </label>
+                      <input
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="phone"
+                        type="text"
+                        placeholder="(+66)"
+                      />
+                      <label
+                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="weight"
+                      >
+                        Weight
+                      </label>
+                      <input
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="weight"
+                        type="text"
+                        placeholder="kg."
+                      />
+                      <label
+                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="height"
+                      >
+                        Height
+                      </label>
+                      <input
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="height"
+                        type="text"
+                        placeholder="cm."
+                      />
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div className="actions">
+                <Popup
+                  trigger={<button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"> Submit </button>}
+                  position="top center"
+                  nested
+                >
+                  <span>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Beatae magni omnis delectus nemo, maxime molestiae dolorem
+                    numquam mollitia, voluptate ea, accusamus excepturi deleniti
+                    ratione sapiente! Laudantium, aperiam doloribus. Odit, aut.
+                  </span>
+                </Popup>
+              </div>
+            </div>
+          )}
+        </Popup>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Patients
+export default Patients;
