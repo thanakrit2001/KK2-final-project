@@ -39,7 +39,7 @@ function Diagnosis() {
       </div>
 
       <div className="mt-20">
-        <div className="w-1/4 p-4 rounded-md shadow-2xl">
+        <div className="w-1/4 p-4 rounded-md shadow-2xl m-8">
           <div className="text-3xl text-center p-4">Diagnose</div>
           <label
             for="dropzone-file"
