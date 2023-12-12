@@ -15,9 +15,9 @@ class Patients(models.Model):
     blood_type = models.CharField(max_length=5, null=True)
     diagnosis = models.TextField(null=True)
     created_date = models.DateTimeField(null=True)
+    created_by = models.CharField(max_length=45, null=True , default='system')
     updated_date = models.DateTimeField(null=True)
-    created_by = models.CharField(max_length=45, null=True)
-    uploaded_by = models.CharField(max_length=45, null=True)
+    uploaded_by = models.CharField(max_length=45, null=True , default='system')
     medic_person = models.ForeignKey(Users, on_delete=models.CASCADE)
     class Meta:
         managed = False  # กำหนดให้ Django ไม่จัดการการสร้างตารางหรือการทำการ migrate

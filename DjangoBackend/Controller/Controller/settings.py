@@ -11,9 +11,18 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+# from dotenv import load_dotenv
+import os
+
+
+# load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Actual directory user files go to
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'mediafiles')
+MEDIA_URL = ''
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'PatientService',
     'UserService',
@@ -50,6 +60,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Replace with the actual origin of your frontend
 ]
 
 ROOT_URLCONF = 'Controller.urls'
@@ -72,6 +87,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Controller.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'ALLOWED_METHODS': ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    # Other DRF settings...
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

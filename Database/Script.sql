@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`patients` (
   UNIQUE INDEX `id_UNIQUE` (`patient_id` ASC) VISIBLE,
   CONSTRAINT `fk_patients_medic_person1`
     FOREIGN KEY (`medic_person_id`)
-    REFERENCES `mydb`.`user` (`user_id`)
+    REFERENCES `mydb`.`users` (`user_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -69,7 +69,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`images` (
   `img_id` INT NOT NULL AUTO_INCREMENT,
-  `image` VARCHAR(45) NULL,
+  `image` VARCHAR(255) NULL,
+  `predict` VARCHAR(50) NULL,
   `patients_id` INT NOT NULL,
   `created_date` TIMESTAMP NULL,
   `created_by` VARCHAR(45) NULL,

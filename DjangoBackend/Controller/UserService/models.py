@@ -8,9 +8,9 @@ class Users(models.Model):
     email = models.EmailField(max_length=45, null=True)
     password = models.CharField(max_length=45, null=True)
     created_date = models.DateTimeField(auto_now_add=True, null=True)
+    created_by = models.CharField(max_length=45, null=True, default='system')
     updated_date = models.DateTimeField(auto_now=True, null=True)
-    created_by = models.CharField(max_length=45, null=True)
-    uploaded_by = models.CharField(max_length=45, null=True)
+    uploaded_by = models.CharField(max_length=45, null=True, default='system')
     class Meta:
         managed = False  # กำหนดให้ Django ไม่จัดการการสร้างตารางหรือการทำการ migrate
         db_table = 'users'

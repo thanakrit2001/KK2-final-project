@@ -1,0 +1,56 @@
+version: '3.3'
+services:
+  mysqldb:
+    image: mysql:5.7
+    container_name: mysqldb
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD
+      - MYSQL_DATABASE=$MYSQL_DATABASE
+      - TZ=Asia/Bangkok
+    ports:
+      - $MYSQL_PORT:$MYSQL_PORT
+    volumes:
+      - db_volume:/var/lib/mysql
+      - ./Database/:/docker-entrypoint-initdb.d/
+  backend:
+    build:
+      context: ./DjangoBackend/Controller
+      dockerfile: Dockerfile
+    command: gunicorn your_project_name.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mysqldb
+  frontend:
+    image: img_frontend
+    container_name: frontend
+    env_file: ./.env
+    build: ./reactfrontend
+    restart: unless-stopped
+    volumes:
+      - ./reactfrontend/:/var/local/app:cached
+      - ./reactfrontend/config/nginx/default.conf:/etc/nginx/conf.d/default.conf:cached
+      - /etc/ssl:/etc/ssl
+    ports:
+      - $FRONT_PORT:$REVERSE
+  proxy_nginx_frontend:
+    image: nginx:1.19.1
+    env_file: ./.env
+    restart: unless-stopped
+    volumes:
+      - ./reactfrontend/config/nginx/Proxy.conf:/etc/nginx/conf.d/Proxy.conf:cached
+      - ./reactfrontend/config/nginx/default.conf:/etc/nginx/conf.d/default.conf:cached
+      - ./reactfrontend/logs/nginx:/var/log/nginx:cached
+      - /etc/ssl:/etc/ssl
+    container_name: proxy_nginx_frontend
+    ports:
+      - $REVERSE:$REVERSE
+      - 443:443
+    depends_on:
+      - frontend
+volumes:
+  db_volume: {}

@@ -1,8 +1,9 @@
 from django.urls import path
-from ImageService.views import ImagesListView, ImagesDetailView
+from ImageService.views import UploadImage,GetImage_Detail
 
 urlpatterns = [
-    path('images/', ImagesListView, name='images-list-create'),
+    path('upload/', UploadImage),
+    path('<int:id>', GetImage_Detail),
     # path('images/<int:pk>/', ImagesDetailView.as_view(), name='images-detail'),
 ]
 
