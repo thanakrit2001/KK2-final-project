@@ -1,8 +1,22 @@
 import React from 'react'
+import { Chart } from "react-google-charts";
+
+export const data = [
+  ["Task", "Hours per Day"],
+  ["Normal", 11],
+  ["Peumonia", 2]
+];
+
+export const options = {
+  title: "Number of Diagnosis",
+};
+
 
 function Diagnosis() {
   return (
-    <div className="w-full h-full">
+        
+
+    <div className="w-full h-full">      
       <div className="pa_information flex w-full m-6 justify-center rounded-md shadow-2xl">
         <img
           src="https://cdn-icons-png.flaticon.com/512/219/219983.png"
@@ -35,10 +49,20 @@ function Diagnosis() {
               A
             </div>
           </div>
-        </div>
+        </div>        
       </div>
-
-      <div className="mt-20">
+      {/* ----------------------------- Chart ------------------------------------------------------------------------------------------------------------------- */}
+      <div class="w-full p-4 rounded-md shadow-2xl m-4">
+      <Chart
+          chartType="PieChart"
+          data={data}
+          options={options}
+          width={"100%"}
+          height={"500px"}
+        />
+        </div>
+        {/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
+      <div className="mt-10">
         <div className="w-full p-4 rounded-md shadow-2xl m-4">
           <div className="text-3xl text-center p-4">Diagnose</div>
           <label
@@ -74,6 +98,7 @@ function Diagnosis() {
         </div>
       </div>
     </div>
+    
   )
 }
 

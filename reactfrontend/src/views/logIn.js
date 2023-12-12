@@ -1,46 +1,47 @@
-import React from 'react'
+import React, { useState } from "react";
 
-function App() {
+function Login() {
   return (
-    <section className="h-screen flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 md:space-x-16 items-center my-2 mx-5 md:mx-0 md:my-0 block">
-      <div className="md:w-2/3 max-w-sm">
-        <label className="pl-32 text-blue-900 text-xl font-bold">
-          ML X-Ray
+    <section className="h-screen w-screen flex flex-col md:flex-row justify-center md:space-x-16 items-center">
+      <div className="absolute md:relative md:w-1/3 max-w-sm invisible md:visible">
+        <label className="pl-10 text-blue-900 text-xl font-bold">
+          Machine Learning for Diagnosis
         </label>
+        <p className="mt-2 font-bold">Empowering Healthcare: </p>
         <p className="text-gray-500">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit suspendisse.
+          Machine Learning technology helps healthcare professionals provide
+          faster, more accurate diagnoses.
         </p>
         <img
           src="https://celltecltd.com/wp-content/uploads/2023/05/undraw_Access_account_re_8spm-980x902.png"
           alt="Home Image"
         />
       </div>
-      <svg
-        width="2"
-        height="660"
-        viewBox="0 0 2 660"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <line
-          x1="1"
-          y1="-4.37114e-08"
-          x2="1.00003"
-          y2="660"
-          stroke="#E2E8F0"
-          strokeWidth="2"
-        />
-      </svg>
-
+      <div className="absolute md:relative invisible md:visible">
+        <svg
+          width="2"
+          height="660"
+          viewBox="0 0 2 660"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="1"
+            y1="-4.37114e-08"
+            x2="1.00003"
+            y2="660"
+            stroke="#E2E8F0"
+            strokeWidth="2"
+          />
+        </svg>
+      </div>
       <div className="md:w-1/3 max-w-sm">
         <div className="text-center md:text-left py-6">
           <label className="mr-1 text-blue-900 text-4xl font-bold">
-            Sign In
+            Sign in
           </label>
         </div>
-        <div className="pb-2">
-          <span className="text-blue-950">Email</span>
-        </div>
+        <div className="pb-2"></div>
         <div className="relative text-gray-400 block">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -52,18 +53,23 @@ function App() {
             <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
           </svg>
           <input
-            className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded"
-            type="text"
-            placeholder="Email Address"
+            type="email"
+            id="floating_filled"
+            className="block rounded-t-lg px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            placeholder=" "
           />
+          <label
+            for="floating_filled"
+            className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+          >
+            Email
+          </label>
         </div>
-        <div className="pt-2 -mb-2">
-          <span className="text-blue-950">Password</span>
-        </div>
+        <div className="pt-6 mb-2"></div>
         <div className="relative block fill-white">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="pointer-events-none w-7 h-7 absolute top-2/3 transform -translate-y-1/2 right-4"
+            className="pointer-events-none w-7 h-7 absolute top-1/2 transform -translate-y-1/2 right-4"
             viewBox="0 1.5 21 20"
           >
             <path
@@ -76,33 +82,36 @@ function App() {
             />
           </svg>
           <input
-            className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4"
+            id="floating_filled2"
+            className="block rounded-t-lg px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             type="password"
-            placeholder="Password"
+            placeholder=" "
           />
+          <label
+            for="floating_filled2"
+            className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+          >
+            Password
+          </label>
         </div>
         <div className="mt-4 flex justify-between font-semibold text-sm">
           <label className="flex text-slate-500 hover:text-slate-600 cursor-pointer">
             <input className="mr-1" type="checkbox" />
-            <span>Remember Me</span>
+            <span>Remember Me </span>
           </label>
-          <a
-            className="text-gray-500 hover:text-gray-800 hover:underline hover:underline-offset-4"
-            href="#"
-          >
-            Forgot Password?
-          </a>
+          {/* <a className="text-gray-500 hover:text-gray-800 hover:underline hover:underline-offset-4" href="#">Forgot Password?</a> */}
         </div>
         <div className="text-center md:text-left">
           <button
             className="w-full mt-4 bg-blue-900 px-4 py-2 text-white uppercase rounded text-xs tracking-wider"
             type="submit"
+            onClick={""}
           >
             Sign In
           </button>
         </div>
         <div className="mt-4 font-semibold text-sm text-slate-500 text-center md:text-left">
-          Don't have an account?{' '}
+          Don't have an account?{" "}
           <a
             className="text-red-600 hover:underline hover:underline-offset-4"
             href="#"
@@ -112,7 +121,7 @@ function App() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default App
+export default Login;
