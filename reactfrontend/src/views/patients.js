@@ -104,8 +104,8 @@ function Patients() {
             <div className="text-center items-center">
               <div className="header "> Add new patients </div>
               <div className="content">
-                <form class="w-full max-w-lg">
-                  <div class="flex flex-wrap -mx-3 mb-6">
+                <form class="w-full">
+                  <div class="flex mx-3 mb-6">
                   <button type="button" class="right-0 top-0 absolute bg-white rounded-md p-2 text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
               <span class="sr-only">Close menu</span>
               <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" onClick={() => {
@@ -117,7 +117,7 @@ function Patients() {
             </button>
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                       <label
-                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        class="block uppercase justify-center tracking-wide text-gray-700 text-xs font-bold mb-2"
                         for="grid-first-name"
                       >
                         First Name
@@ -144,8 +144,8 @@ function Patients() {
                       />
                     </div>
                   </div>
-                  <div class="flex flex-wrap -mx-3 mb-6">
-                    <div class="w-full px-3">
+                  <div class="flex flex-wrap mx-3 mb-6">
+                    <div class="w-1/3 px-3">
                       <label
                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                         for="grid-password"
@@ -158,37 +158,38 @@ function Patients() {
                       </p>
                     </div>
                   </div>
-                  <div class="flex flex-wrap -mx-3 mb-2">
+                  <div class="flex flex-wrap mx-3 mb-2">                                      
                     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                       <label
                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                        for="grid-city"
+                        for="phone"
                       >
-                        City
+                        Phone number
                       </label>
                       <input
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        id="grid-city"
+                        class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="phone"
                         type="text"
-                        placeholder="Albuquerque"
+                        placeholder="(+66)"
                       />
+                      
                     </div>
-                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                       <label
                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                        for="grid-state"
+                        for="gender"
                       >
                         Gender
                       </label>
                       <div class="relative">
                         <select
-                          class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                          id="grid-state"
+                          class="appearance-none w-full bg-gray-50 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                          id="gender"
                         >
                           <option>Male</option>
                           <option>Female</option>
                         </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <div class="absolute inset-y-0 right-1 pointer-events-none flex items-center text-gray-700">
                           <svg
                             class="fill-current h-4 w-4"
                             xmlns="http://www.w3.org/2000/svg"
@@ -199,19 +200,8 @@ function Patients() {
                         </div>
                       </div>
                     </div>
-                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                      <label
-                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                        for="phone"
-                      >
-                        Phone number
-                      </label>
-                      <input
-                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="phone"
-                        type="text"
-                        placeholder="(+66)"
-                      />
+
+                    <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                       <label
                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                         for="weight"
@@ -219,11 +209,13 @@ function Patients() {
                         Weight
                       </label>
                       <input
-                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="weight"
                         type="text"
                         placeholder="kg."
                       />
+                      </div>
+                      <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                       <label
                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                         for="height"
@@ -231,18 +223,18 @@ function Patients() {
                         Height
                       </label>
                       <input
-                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="height"
                         type="text"
                         placeholder="cm."
                       />
-                    </div>
+                      </div>
                   </div>
                 </form>
               </div>
               <div className="actions">
                 <Popup
-                  trigger={<button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"> Submit </button>}
+                  trigger={<button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-lg"> Submit </button>}
                   position="top center"
                   nested
                 >
