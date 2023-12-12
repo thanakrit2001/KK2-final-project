@@ -1,7 +1,7 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Patients from './views/patients';
-import Login from './views/logIn';
-import Home from './views/home';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Patients from "./views/patients";
+import Login from "./views/logIn";
+import Home from "./views/home";
 
 function App() {
   return (
@@ -14,5 +14,4 @@ function App() {
     </Router>
   );
 }
-
 export default App;
