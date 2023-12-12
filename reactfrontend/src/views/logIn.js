@@ -1,21 +1,25 @@
 import React from 'react';
 
+
 function App() {
   return (    
-    <section className="h-screen flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 md:space-x-16 items-center my-2 mx-5 md:mx-0 md:my-0 block">
-      <div className="md:w-2/3 max-w-sm">
-      <label className="pl-32 text-blue-900 text-xl font-bold">ML X-Ray</label>
-        <p className="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit suspendisse.</p>
+    <section className="h-screen w-screen flex flex-col md:flex-row justify-center md:space-x-16 items-center">
+      <div className="absolute md:relative md:w-1/3 max-w-sm invisible md:visible">
+      <label className="pl-10 text-blue-900 text-xl font-bold">Machine Learning for Diagnosis</label>
+        <p className="mt-2 font-bold">Empowering Healthcare: </p>
+        <p class="text-gray-500">Machine Learning technology helps healthcare professionals provide faster, more accurate diagnoses.</p>
         <img
           src="https://celltecltd.com/wp-content/uploads/2023/05/undraw_Access_account_re_8spm-980x902.png"
           alt="Home Image" />       
       </div>
+      <div class="absolute md:relative invisible md:visible">
       <svg width="2" height="660" viewBox="0 0 2 660" fill="none" xmlns="http://www.w3.org/2000/svg">
         <line x1="1" y1="-4.37114e-08" x2="1.00003" y2="660" stroke="#E2E8F0" strokeWidth="2"/>
       </svg>
+      </div>
       <div className="md:w-1/3 max-w-sm">
         <div className="text-center md:text-left py-6">
-          <label className="mr-1 text-blue-900 text-4xl font-bold">Sign In</label>
+          <label className="mr-1 text-blue-900 text-4xl font-bold">Sign in</label>
         </div>
         <div className="pb-2">
         </div>
@@ -39,9 +43,9 @@ function App() {
         <div className="mt-4 flex justify-between font-semibold text-sm">
           <label className="flex text-slate-500 hover:text-slate-600 cursor-pointer">
             <input className="mr-1" type="checkbox" />
-            <span>Remember Me</span>
+            <span>Remember Me   </span>
           </label>
-          <a className="text-gray-500 hover:text-gray-800 hover:underline hover:underline-offset-4" href="#">Forgot Password?</a>
+          {/* <a className="text-gray-500 hover:text-gray-800 hover:underline hover:underline-offset-4" href="#">Forgot Password?</a> */}
         </div>
         <div className="text-center md:text-left">
           <button className="w-full mt-4 bg-blue-900 px-4 py-2 text-white uppercase rounded text-xs tracking-wider" type="submit">Sign In</button>

@@ -1,8 +1,12 @@
+import Patients from './views/patients';
 import Login from './views/logIn'
+import Home from './views/home'
 
 function App() {
   return (
-    <Login />
+    // <Patients/>
+    <Login/>
+    // <Home/>
   );
 }
 
