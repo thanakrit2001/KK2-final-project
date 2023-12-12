@@ -3,7 +3,7 @@ import React from 'react'
 function Diagnosis() {
   return (
     <div className="w-full h-full">
-      <div className="pa_information flex w-1/2 m-6 justify-center border-2 border-rose-500 rounded-md shadow-2xl">
+      <div className="pa_information flex w-full m-6 justify-center rounded-md shadow-2xl">
         <img
           src="https://cdn-icons-png.flaticon.com/512/219/219983.png"
           alt=""
@@ -39,7 +39,7 @@ function Diagnosis() {
       </div>
 
       <div className="mt-20">
-        <div className="w-1/4 p-4 rounded-md shadow-2xl m-8">
+        <div className="w-full p-4 rounded-md shadow-2xl m-4">
           <div className="text-3xl text-center p-4">Diagnose</div>
           <label
             for="dropzone-file"
