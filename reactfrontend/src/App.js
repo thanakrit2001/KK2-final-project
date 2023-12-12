@@ -1,9 +1,7 @@
-import Patients from './views/patients';
+import Diagnosis from './views/diagnosis'
 
 function App() {
-  return (
-    <Patients/>
-  );
+  return <Diagnosis />
 }
 
-export default App;
+export default App
