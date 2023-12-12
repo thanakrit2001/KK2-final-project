@@ -105,4 +105,8 @@ function Header() {
   )
 }
 
+<<<<<<< HEAD
 export default Header
+=======
+export default Header
+>>>>>>> b168897f5eb5753a03a60db4f2da46b613e90e88
