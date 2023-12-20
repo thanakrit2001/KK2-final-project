@@ -62,7 +62,10 @@ function Patients() {
               <td class="px-6 py-4">MM-DD-YYYY</td>
               <td class="px-6 py-4"></td>
               <td class="px-6 py-4 text-right">
-                <a href="#" class="font-medium text-blue-600">
+              <a href="#" class="font-medium text-blue-600 mx-2 hover:underline">
+                  View
+                </a>
+                <a href="#" class="font-medium text-blue-600 hover:underline">
                   Edit
                 </a>
               </td>
