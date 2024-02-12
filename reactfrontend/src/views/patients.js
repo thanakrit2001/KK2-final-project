@@ -62,6 +62,7 @@ function Patients() {
             </tr>
           </thead>
           <tbody>
+<<<<<<< HEAD
             {patientData.map((patient) => (
               <tr key={patient.id} className="bg-white border-b">
                 <th
@@ -85,6 +86,62 @@ function Patients() {
                 </td>
               </tr>
             ))}
+=======
+            <tr class="bg-white border-b">
+              <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+              >
+                Eva Mendes
+              </th>
+              <td class="px-6 py-4">INV001</td>
+              <td class="px-6 py-4">Female</td>
+              <td class="px-6 py-4">MM-DD-YYYY</td>
+              <td class="px-6 py-4"></td>
+              <td class="px-6 py-4 text-right">
+                <a href="#" class="font-medium text-blue-600 hover:underline">
+                  Edit
+                </a>
+              </td>
+            </tr>
+            <tr class="bg-white border-b ">
+              <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
+              >
+                Ricky Crooks
+              </th>
+              <td class="px-6 py-4">INV005</td>
+              <td class="px-6 py-4">Male</td>
+              <td class="px-6 py-4">MM-DD-YYYY</td>
+              <td class="px-6 py-4"></td>
+              <td class="px-6 py-4 text-right">
+              <a href="#" class="font-medium text-blue-600 mx-2 hover:underline">
+                  View
+                </a>
+                <a href="#" class="font-medium text-blue-600 hover:underline">
+                  Edit
+                </a>
+              </td>
+            </tr>
+            <tr class="bg-white ">
+              <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
+              >
+                Eric D'Amore
+              </th>
+              <td class="px-6 py-4">INV002</td>
+              <td class="px-6 py-4">Male</td>
+              <td class="px-6 py-4">MM-DD-YYYY</td>
+              <td class="px-6 py-4"></td>
+              <td class="px-6 py-4 text-right">
+                <a href="#" class="font-medium text-blue-600 hover:underline">
+                  Edit
+                </a>
+              </td>
+            </tr>
+>>>>>>> 396b85800b999195e1a07a686ac9eccefe9a7e64
           </tbody>
         </table>
       </div>
