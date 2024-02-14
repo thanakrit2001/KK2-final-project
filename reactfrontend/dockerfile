@@ -1,0 +1,25 @@
+# Stage 1: Build TypeScript React app
+FROM node:14-alpine as builder
+
+WORKDIR /reactfrontend
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+RUN npm run build
+
+# Stage 2: Serve built app using NGINX
+FROM nginx:alpine
+
+# Copy built app from the builder stage
+COPY --from=builder /reactfrontend/build /usr/share/nginx/html
+
+# Copy NGINX configuration
+COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
+# Expose port 80
+EXPOSE 80
+
+# Start NGINX
+CMD ["nginx", "-g", "daemon off;"]
