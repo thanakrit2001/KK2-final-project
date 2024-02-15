@@ -64,7 +64,7 @@ export const Register = () => {
             <h3 className="font-bold">Position:</h3>
             <select
               name="position"
-              className="w-3/4 mt-2 py-2 px-2 border rounded-md"
+              className="w-3/4 mt-2 py-2 px-2 border rounded-md cursor-pointer"
             >
               <option value="student">Student</option>
             </select>
