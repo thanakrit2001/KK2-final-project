@@ -13,7 +13,7 @@ export const Register = () => {
             <input
               type="text"
               placeholder="Your Name"
-              className="w-60 mt-2 py-2 px-2 border rounded-md"
+              className="w-3/4 mt-2 py-2 px-2 border rounded-md"
             />
             <br />
           </div>
@@ -23,7 +23,7 @@ export const Register = () => {
             <input
               type="text"
               placeholder="Your Surname"
-              className="w-60 mt-2 py-2 px-2 border rounded-md"
+              className="w-3/4 mt-2 py-2 px-2 border rounded-md"
             />
             <br />
           </div>
@@ -34,7 +34,7 @@ export const Register = () => {
               type="email"
               id="email"
               placeholder="example@mail.com"
-              className="w-60 mt-2 py-2 px-2 border rounded-md"
+              className="w-3/4 mt-2 py-2 px-2 border rounded-md"
             />
             <br />
 
@@ -44,7 +44,7 @@ export const Register = () => {
               type="password"
               id="pass"
               placeholder="Input your password again"
-              className="w-60 mt-2 py-2 px-2 border rounded-md"
+              className="w-3/4 mt-2 py-2 px-2 border rounded-md"
             />
             <br />
           </div>
@@ -55,7 +55,7 @@ export const Register = () => {
               type="password"
               id="pass"
               placeholder="Your password"
-              className="w-60 mt-2 py-2 px-2 border rounded-md"
+              className="w-3/4 mt-2 py-2 px-2 border rounded-md"
             />
             <br />
           </div>
@@ -64,7 +64,7 @@ export const Register = () => {
             <h3 className="font-bold">Position:</h3>
             <select
               name="position"
-              className="w-60 mt-2 py-2 px-2 border rounded-md"
+              className="w-3/4 mt-2 py-2 px-2 border rounded-md"
             >
               <option value="student">Student</option>
             </select>
