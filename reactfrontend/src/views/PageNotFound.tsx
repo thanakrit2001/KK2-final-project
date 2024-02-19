@@ -1,8 +1,8 @@
-import { Link, useRouteError } from "react-router-dom";
+import { Link, useRouteError } from 'react-router-dom'
 
 export const PageNotFound = () => {
-  const error = useRouteError();
-  console.error(error);
+  const error = useRouteError()
+  console.error(error)
 
   return (
     <>
@@ -14,7 +14,7 @@ export const PageNotFound = () => {
             </h1>
 
             <h6 className="mb-2 text-2xl font-bold text-center text-gray-800 md:text-3xl">
-              <span className="text-red-500">Oops!</span> Page{" "}
+              <span className="text-red-500">Oops!</span> Page{' '}
             </h6>
 
             <p className="mb-4 text-center text-gray-500 md:text-lg">
@@ -31,5 +31,5 @@ export const PageNotFound = () => {
         </div>
       </div>
     </>
-  );
+  )
 }

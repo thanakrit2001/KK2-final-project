@@ -6,19 +6,21 @@ import { createBrowserRouter, Route, Navigate } from 'react-router-dom'
 import { Register } from '../views/Register'
 import { PageNotFound } from '../views/PageNotFound'
 
-import { isAuthenticated } from '../config/authUtils';
+import { isAuthenticated } from '../config/authUtils'
 
 const requireAuth = (element: React.ReactElement) => {
-  return isAuthenticated() ? element : <Navigate to="/signin" />;
-};
+  return isAuthenticated() ? element : <Navigate to="/signin" />
+}
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layout> 
-      <Route index element={<ListPatient />} />
-      <Route path="/detail/:id" element={<DetailPatient />} />
-    </Layout>,
+    element: (
+      <Layout>
+        <Route index element={<ListPatient />} />
+        <Route path="/detail/:id" element={<DetailPatient />} />
+      </Layout>
+    ),
     children: [
       { path: '/', element: <ListPatient /> },
       { path: '/detail/:id', element: <DetailPatient /> },
@@ -26,11 +28,17 @@ export const router = createBrowserRouter([
   },
   {
     path: '/signin',
-    element: <Signin updateTokenAndLoginStatus={(newToken, loggedInStatus) => {}}/>,
+    element: (
+      <Signin updateTokenAndLoginStatus={(newToken, loggedInStatus) => {}} />
+    ),
   },
   {
     path: '/register',
-    element: <Register/>,
+    element: <Register />,
+  },
+  {
+    path: '/404',
+    element: <PageNotFound />,
   },
   {
     path: '/404',
