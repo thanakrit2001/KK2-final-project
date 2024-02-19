@@ -4,9 +4,41 @@ import { DetailPatient } from './Patiant/DetailPatient';
 import { ListPatient } from './Patiant/ListPatiant';
 import { Route, Routes } from 'react-router-dom';
 import { FormPatientModel } from '../components/AddPatientModel';
+import React, { useState , useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 
-
-export const Layout = () => {
+interface LayoutProps {
+    children: React.ReactNode;
+  }
+  
+  export const Layout: React.FC<LayoutProps> = ({ children }) => {
+    const [isLoggedIn, setLoggedIn] = useState(false);
+    const [token, setToken] = useState('');
+    const navigate = useNavigate();
+  
+    useEffect(() => {
+      checkToken();
+    }, []);
+  
+    const checkToken = () => {
+      const storedToken = localStorage.getItem('token');
+      if (storedToken) {
+        setToken(storedToken);
+        setLoggedIn(true);
+      } else {
+        setToken('');
+        setLoggedIn(false);
+        // Redirect to sign-in page if not logged in
+        navigate('/signin');
+      }
+    };
+  
+    const updateTokenAndLoginStatus = (newToken: string, loggedInStatus: boolean) => {
+      setToken(newToken);
+      setLoggedIn(loggedInStatus);
+      localStorage.setItem('token', newToken);
+    };
+  
     return (
         <div className="parent md:h-screen md:grid md:grid-cols-10">
             <section className="sidebar bg-green-400 md:col-span-2">

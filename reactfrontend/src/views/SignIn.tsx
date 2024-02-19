@@ -1,4 +1,41 @@
-export const Signin = () => {
+import React, { useState } from 'react';
+interface SigninProps {
+  updateTokenAndLoginStatus: (newToken: string, loggedInStatus: boolean) => void;
+}
+
+export const Signin: React.FC<SigninProps> = ({ updateTokenAndLoginStatus }) => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+  
+    const handleSignIn = async () => {
+      try {
+        // Perform authentication logic and obtain newToken
+        const response = await fetch('your_authentication_api_endpoint', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username,
+            password,
+          }),
+        });
+  
+        if (!response.ok) {
+          console.error('Authentication failed');
+          return;
+        }
+  
+        const data = await response.json();
+        const newToken = data.token;
+  
+        // Update token and login status in the layout
+        updateTokenAndLoginStatus(newToken, true);
+      } catch (error) {
+        console.error('Error during sign-in:', error);
+      }
+    };
+
     return (
         <section className="h-screen w-screen flex flex-col md:flex-row justify-center md:space-x-16 items-center">
             <div className="absolute md:relative md:w-1/3 max-w-sm invisible md:visible">
@@ -68,6 +105,8 @@ export const Signin = () => {
                         id="floating_filled"
                         className="block rounded-t-lg px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-gray-50  border-0 border-b-2 border-gray-300 appearance-none   dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" "
+                        value={username} 
+                        onChange={(e) => setUsername(e.target.value)}
                     />
                     
                     <label
@@ -110,12 +149,14 @@ export const Signin = () => {
                         className="block rounded-t-lg px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-gray-50  border-0 border-b-2 border-gray-300 appearance-none dark:text-white  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         type="password"
                         placeholder=" "
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
                     <label
                         // for="floating_filled"
                         className="absolute text-sm text-gray-500  duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
                     >
-                        Password
+                    Password
                     </label>
                 </div>
                 <div className="mt-4 flex justify-between font-semibold text-sm">
@@ -129,7 +170,7 @@ export const Signin = () => {
                     <button
                         className="w-full mt-4 bg-blue-900 px-4 py-2 text-white uppercase rounded text-xs tracking-wider"
                         type="submit"
-                    // onClick={""}
+                        onClick={handleSignIn}
                     >
                         Sign In
                     </button>
