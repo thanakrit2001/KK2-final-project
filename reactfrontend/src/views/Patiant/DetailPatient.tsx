@@ -1,15 +1,15 @@
-import axios from "axios";
-import { ChangeEvent, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { Patient } from "./types";
-import Swal from "sweetalert2";
+import axios from 'axios'
+import { ChangeEvent, useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { Patient } from './types'
+import Swal from 'sweetalert2'
 
 export const DetailPatient = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams<{ id: string }>()
 
-  const patientId = id ? id : '0';
+  const patientId = id ? id : '0'
 
-  const [userData, setUserData] = useState<Patient>();
+  const [userData, setUserData] = useState<Patient>()
 
   useEffect(() => {
     // Fetch data when the component mounts
@@ -17,71 +17,72 @@ export const DetailPatient = () => {
       try {
         const response = await axios.get(
           `http://127.0.0.1:8000/api/patient/${patientId}`
-        );
-        setUserData(response.data);
+        )
+        setUserData(response.data)
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error)
       }
-    };
+    }
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null)
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
+    const file = event.target.files?.[0]
     console.log()
     if (file) {
-      const allowedTypes = ['image/jpeg', 'image/jpg'];
+      const allowedTypes = ['image/jpeg', 'image/jpg']
 
       if (allowedTypes.includes(file.type)) {
-        setSelectedFile(file);
+        setSelectedFile(file)
         console.log(file)
       } else {
         Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Invalid file type. Please select jpeg or jpg file.",
-        });
-        console.error('Invalid file type. Please select a valid image file.');
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Invalid file type. Please select jpeg or jpg file.',
+        })
+        console.error('Invalid file type. Please select a valid image file.')
       }
     }
-  };
+  }
 
   const handleFileUpload = async () => {
     try {
       console.log(selectedFile)
       if (!selectedFile) {
         Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "No file selected. Please input file.",
-        });
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No file selected. Please input file.',
+        })
         // console.error('No file selected');
-        return;
+        return
       }
 
-      const formData = new FormData();
-      formData.append('image', selectedFile);
-      formData.append('patients_id', patientId);
+      const formData = new FormData()
+      formData.append('image', selectedFile)
+      formData.append('patients_id', patientId)
 
       // Use an API endpoint to handle file upload on the server
-      const response = await axios.post('http://127.0.0.1:8000/api/image/upload/', formData);
+      const response = await axios.post(
+        'http://127.0.0.1:8000/api/image/upload/',
+        formData
+      )
       if (response.status == 200) {
-        if(response.data.predict == 0)
-          Swal.fire("pneumonia risk");
-        else
-          Swal.fire("Normal");
+        if (response.data.predict == 0) Swal.fire('pneumonia risk')
+        else Swal.fire('Normal')
         // Handle success, e.g., show a success message
       } else {
-        console.error('File upload failed');
+        console.error('File upload failed')
         // Handle failure, e.g., show an error message
       }
     } catch (error) {
-      console.error('Error uploading file', error);
+      console.error('Error uploading file', error)
     }
-  };
+  }
 
   return (
     <div className="w-full h-full">
@@ -138,7 +139,7 @@ export const DetailPatient = () => {
                 type="file"
                 id="formFile"
                 onChange={handleFileChange}
-                 />
+              />
             </div>
             <button
               type="submit"
@@ -148,9 +149,8 @@ export const DetailPatient = () => {
               Upload
             </button>
           </div>
-
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
