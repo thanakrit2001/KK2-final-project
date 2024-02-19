@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 interface SigninProps {
-  updateTokenAndLoginStatus: (newToken: string, loggedInStatus: boolean) => void;
+    updateTokenAndLoginStatus: (newToken: string, loggedInStatus: boolean) => void;
 }
 
 export const Signin: React.FC<SigninProps> = ({ updateTokenAndLoginStatus }) => {
@@ -10,39 +11,75 @@ export const Signin: React.FC<SigninProps> = ({ updateTokenAndLoginStatus }) => 
     const navigate = useNavigate();
 
     const handleSignIn = async () => {
-      try {
-        // Perform authentication logic and obtain newToken
-        const response = await fetch('asdsad', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            email,
-            password,
-          }),
-        });
-  
-        if(response.status == 200) {
-            localStorage.setItem('token', 'value')
-        }
+        try {
+            // Perform authentication logic and obtain newToken
+            const response = await fetch('asdsad', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email,
+                    password,
+                }),
+            });
 
-        if (!response.ok) {
-        //   console.error('Authentication failed');
-        //   navigate('/');
-        //   return;
-            localStorage.setItem('token', 'value')
-            navigate('/');
+            if (response.status == 200) {
+                localStorage.setItem('token', 'value')
+
+
+            }
+
+            if (!response.ok) {
+                //   console.error('Authentication failed');
+                //   navigate('/');
+                //   return;
+                localStorage.setItem('token', 'value')
+
+                setTimeout(() => {
+                    navigate('/');
+                }, 2000);
+
+                let timerInterval: NodeJS.Timeout;
+                Swal.fire({
+                    title: "Login Success!!!",
+                    width: 300,
+                    padding: "2em",
+                    color: "#716add",
+                    timer: 2000,
+                    timerProgressBar: false,
+                    background: "#fff url(/images/trees.png)",
+                    backdrop: `rgba(0,0,123,0.4)`,
+                    didOpen: () => {
+                        Swal.showLoading();
+                        const timer = Swal.getPopup()?.querySelector("b");
+                        if (timer) {
+                            timerInterval = setInterval(() => {
+                                timer.textContent = `${Swal.getTimerLeft()}`;
+                            }, 100);
+                        }
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval);
+                    }
+                }).then((result) => {
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        console.log("I was closed by the timer");
+                    }
+                });
+
+
+
+            }
+
+            const data = await response.json();
+            const newToken = data.token;
+
+            // Update token and login status in the layout
+            updateTokenAndLoginStatus(newToken, true);
+        } catch (error) {
+            console.error('Error during sign-in:', error);
         }
-  
-        const data = await response.json();
-        const newToken = data.token;
-  
-        // Update token and login status in the layout
-        updateTokenAndLoginStatus(newToken, true);
-      } catch (error) {
-        console.error('Error during sign-in:', error);
-      }
     };
 
     return (
@@ -114,16 +151,21 @@ export const Signin: React.FC<SigninProps> = ({ updateTokenAndLoginStatus }) => 
                         id="floating_filled"
                         className="block rounded-t-lg px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-gray-50  border-0 border-b-2 border-gray-300 appearance-none   dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" "
-                        value={email} 
+                        required
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}"
+                        value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
-                    
+
                     <label
                         // for="floating_filled"
                         className="absolute text-sm text-gray-500  duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
                     >
                         Email
                     </label>
+                    <span className="hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                        Please enter a valid email address
+                    </span>
                 </div>
                 <div className="pt-6 mb-2"></div>
                 <div className="relative block fill-white">
@@ -165,7 +207,7 @@ export const Signin: React.FC<SigninProps> = ({ updateTokenAndLoginStatus }) => 
                         // for="floating_filled"
                         className="absolute text-sm text-gray-500  duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
                     >
-                    Password
+                        Password
                     </label>
                 </div>
                 <div className="mt-4 flex justify-between font-semibold text-sm">
