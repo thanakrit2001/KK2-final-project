@@ -60,7 +60,12 @@ export const Register = () => {
       console.error('An error occurred during registration', error)
       setError('An error occurred. Please try again later.')
     }
+
   }
+
+  const handleCancel = () => {
+    navigate('/signin');
+  };
 
   return (
     <div className="container min-w-full flex flex-col min-h-screen justify-center items-center">
@@ -97,9 +102,8 @@ export const Register = () => {
               type="email"
               id="email"
               placeholder="example@mail.com"
-              className={`w-3/4 mt-2 py-2 px-2 border rounded-md ${
-                email && !validateEmailFormat() ? 'border-red-500' : ''
-              }`}
+              className={`w-3/4 mt-2 py-2 px-2 border rounded-md ${email && !validateEmailFormat() ? 'border-red-500' : ''
+                }`}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -113,16 +117,14 @@ export const Register = () => {
               type="password"
               id="pass"
               placeholder="Input your password again"
-              className={`w-3/4 mt-2 py-2 px-2 border rounded-md ${
-                password !== confirmPassword ? 'border-red-500' : ''
-              }`}
+              className={`w-3/4 mt-2 py-2 px-2 border rounded-md ${password !== confirmPassword ? 'border-red-500' : ''
+                }`}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <p
-              className={`text-red-500 text-sm ${
-                password !== confirmPassword ? '' : 'hidden'
-              }`}
+              className={`text-red-500 text-sm ${password !== confirmPassword ? '' : 'hidden'
+                }`}
             >
               Passwords do not match
             </p>
@@ -135,9 +137,8 @@ export const Register = () => {
               type="password"
               id="pass"
               placeholder="Your password"
-              className={`w-3/4 mt-2 py-2 px-2 border rounded-md ${
-                password !== confirmPassword ? 'border-red-500' : ''
-              }`}
+              className={`w-3/4 mt-2 py-2 px-2 border rounded-md ${password !== confirmPassword ? 'border-red-500' : ''
+                }`}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -167,6 +168,7 @@ export const Register = () => {
           <button
             type="submit"
             className="bg-gray-400 text-black rounded-md shadow-lg p-2 m-2"
+            onClick={handleCancel}
           >
             Cancel
           </button>

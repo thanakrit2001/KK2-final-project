@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 interface SigninProps {
@@ -66,9 +66,7 @@ export const Signin: React.FC<SigninProps> = ({ updateTokenAndLoginStatus }) => 
                     if (result.dismiss === Swal.DismissReason.timer) {
                         console.log("I was closed by the timer");
                     }
-                });
-
-
+                });              
 
             }
 
@@ -211,11 +209,6 @@ export const Signin: React.FC<SigninProps> = ({ updateTokenAndLoginStatus }) => 
                     </label>
                 </div>
                 <div className="mt-4 flex justify-between font-semibold text-sm">
-                    <label className="flex text-slate-500 hover:text-slate-600 cursor-pointer">
-                        <input className="mr-1" type="checkbox" />
-                        <span>Remember Me </span>
-                    </label>
-                    {/* <a className="text-gray-500 hover:text-gray-800 hover:underline hover:underline-offset-4" href="#">Forgot Password?</a> */}
                 </div>
                 <div className="text-center md:text-left">
                     <button
