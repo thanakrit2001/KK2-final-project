@@ -1,38 +1,65 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export const Register = () => {
+  const [name, setName] = useState('')
+  const [surname, setSurname] = useState('')
   const [email, setEmail] = useState('')
-  const [isValid, setIsValid] = useState(true)
-
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newEmail = event.target.value
-    setEmail(newEmail)
-
-    // ตรวจสอบรูปแบบอีเมล
-    const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
-    setIsValid(emailPattern.test(newEmail))
-  }
-
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-  const [passwordsMatch, setPasswordsMatch] = useState(true)
+  const [position, setPosition] = useState('student')
+  const [error, setError] = useState('')
+  const navigate = useNavigate()
 
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newPassword = event.target.value
-    setPassword(newPassword)
-
-    // ตรวจสอบว่า password ตรงกันหรือไม่
-    setPasswordsMatch(newPassword === confirmPassword)
+  const validateEmailFormat = () => {
+    const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/
+    return emailPattern.test(email)
   }
 
-  const handleConfirmPasswordChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const newConfirmPassword = event.target.value
-    setConfirmPassword(newConfirmPassword)
+  const handleRegister = async () => {
+    try {
+      // Perform validation, e.g., check if passwords match, etc.
+      if (password !== confirmPassword) {
+        setError('Passwords do not match')
+        return
+      }
 
-    // ตรวจสอบว่า password ตรงกันหรือไม่
-    setPasswordsMatch(password === newConfirmPassword)
+      if (password !== confirmPassword) {
+        setError('Passwords do not match')
+        return
+      }
+
+      // Validate email format
+      if (!validateEmailFormat()) {
+        setError('Invalid email format')
+        return
+      }
+
+      const response = await fetch('your_registration_api_endpoint', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          surname,
+          email,
+          password,
+          position,
+        }),
+      })
+
+      if (!response.ok) {
+        navigate('/signin')
+        return
+      }
+
+      const data = await response.json()
+      const newToken = data.token
+    } catch (error) {
+      console.error('An error occurred during registration', error)
+      setError('An error occurred. Please try again later.')
+    }
   }
 
   return (
@@ -70,16 +97,16 @@ export const Register = () => {
               type="email"
               id="email"
               placeholder="example@mail.com"
-              maxLength={50}
               className={`w-3/4 mt-2 py-2 px-2 border rounded-md ${
-                isValid ? '' : 'border-red-500'
+                email && !validateEmailFormat() ? 'border-red-500' : ''
               }`}
               value={email}
-              onChange={handleEmailChange}
+              onChange={(e) => setEmail(e.target.value)}
             />
-            {!isValid && <p className="text-red-500">Invalid email format.</p>}
-
             <br />
+            {!validateEmailFormat() && email && (
+              <p className="text-red-500 text-sm">Invalid email format</p>
+            )}
 
             <h3 className="font-bold">Confirm Password:</h3>
             <input
@@ -87,17 +114,17 @@ export const Register = () => {
               id="pass"
               placeholder="Input your password again"
               className={`w-3/4 mt-2 py-2 px-2 border rounded-md ${
-                passwordsMatch ? '' : 'border-red-500'
+                password !== confirmPassword ? 'border-red-500' : ''
               }`}
               value={confirmPassword}
-              onChange={handleConfirmPasswordChange}
+              onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <p
               className={`text-red-500 text-sm ${
-                passwordsMatch ? 'hidden' : ''
+                password !== confirmPassword ? '' : 'hidden'
               }`}
             >
-              Password not match.
+              Passwords do not match
             </p>
             <br />
           </div>
@@ -108,9 +135,11 @@ export const Register = () => {
               type="password"
               id="pass"
               placeholder="Your password"
-              className="w-3/4 mt-2 py-2 px-2 border rounded-md"
+              className={`w-3/4 mt-2 py-2 px-2 border rounded-md ${
+                password !== confirmPassword ? 'border-red-500' : ''
+              }`}
               value={password}
-              onChange={handlePasswordChange}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <br />
           </div>
@@ -121,7 +150,7 @@ export const Register = () => {
               name="position"
               className="w-3/4 mt-2 py-2 px-2 border rounded-md cursor-pointer"
             >
-              <option value="student">Student</option>
+              <option value="doctor">Doctor</option>
             </select>
             <br />
           </div>
@@ -131,6 +160,7 @@ export const Register = () => {
           <button
             type="submit"
             className="bg-blue-900 text-white rounded-md shadow-lg p-2 m-2"
+            onClick={handleRegister}
           >
             Confirm
           </button>
@@ -138,7 +168,7 @@ export const Register = () => {
             type="submit"
             className="bg-gray-400 text-black rounded-md shadow-lg p-2 m-2"
           >
-            Cancle
+            Cancel
           </button>
         </div>
       </div>
