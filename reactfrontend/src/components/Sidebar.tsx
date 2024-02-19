@@ -1,10 +1,17 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
+import * as React from 'react'
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export const Sidebar = () => {
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    navigate('/signin')
+  }
+
   return (
     <div className="bg-gray-800 border-r border-gray-200 h-full">
-
       {/* <div className="py-4 px-6">
         <a href="/">
           <svg className="w-full h-10" viewBox="0 0 69 40">
@@ -14,7 +21,7 @@ export const Sidebar = () => {
       </div> */}
       <div className="px-6 pt-10 pb-4">
         <a
-          className="flex-none text-xl font-semibold dark:text-white"
+          className="flex-none text-xl font-semibold dark:text-white "
           href="/"
           aria-label="Brand"
         >
@@ -22,7 +29,7 @@ export const Sidebar = () => {
         </a>
       </div>
       <nav
-        className="hs-accordion-group p-6 w-full flex flex-col flex-wrap"
+        className="hs-accordion-group p-6 w-full flex flex-col flex-wrap min-h-screen"
         data-hs-accordion-always-open
       >
         <ul className="space-y-1.5">
@@ -57,8 +64,6 @@ export const Sidebar = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-
-
               >
                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
                 <circle cx="9" cy="7" r="4" />
@@ -74,8 +79,6 @@ export const Sidebar = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-
-
               >
                 <path d="m18 15-6-6-6 6" />
               </svg>
@@ -90,7 +93,6 @@ export const Sidebar = () => {
                 <path
                   d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5"
                   stroke="currentColor"
-
                 ></path>
               </svg>
             </button>
@@ -117,8 +119,6 @@ export const Sidebar = () => {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-
-
                     >
                       <path d="m18 15-6-6-6 6" />
                     </svg>
@@ -130,8 +130,6 @@ export const Sidebar = () => {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-
-
                     >
                       <path d="m6 9 6 6 6-6" />
                     </svg>
@@ -156,8 +154,6 @@ export const Sidebar = () => {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-
-
                     >
                       <path d="m18 15-6-6-6 6" />
                     </svg>
@@ -169,8 +165,6 @@ export const Sidebar = () => {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-
-
                     >
                       <path d="m6 9 6 6 6-6" />
                     </svg>
@@ -198,8 +192,6 @@ export const Sidebar = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-
-
               >
                 <circle cx="18" cy="15" r="3" />
                 <circle cx="9" cy="7" r="4" />
@@ -222,8 +214,6 @@ export const Sidebar = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-
-
               >
                 <path d="m18 15-6-6-6 6" />
               </svg>
@@ -238,7 +228,6 @@ export const Sidebar = () => {
                 <path
                   d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5"
                   stroke="currentColor"
-
                 ></path>
               </svg>
             </button>
@@ -262,8 +251,6 @@ export const Sidebar = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-
-
               >
                 <path d="M15.5 2H8.6c-.4 0-.8.2-1.1.5-.3.3-.5.7-.5 1.1v12.8c0 .4.2.8.5 1.1.3.3.7.5 1.1.5h9.8c.4 0 .8-.2 1.1-.5.3-.3.5-.7.5-1.1V6.5L15.5 2z" />
                 <path d="M3 7.6v12.8c0 .4.2.8.5 1.1.3.3.7.5 1.1.5h9.8" />
@@ -278,8 +265,6 @@ export const Sidebar = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-
-
               >
                 <path d="m18 15-6-6-6 6" />
               </svg>
@@ -294,8 +279,6 @@ export const Sidebar = () => {
                 <path
                   d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5"
                   stroke="currentColor"
-
-
                 ></path>
               </svg>
             </button>
@@ -319,8 +302,6 @@ export const Sidebar = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-
-
               >
                 <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
                 <line x1="16" x2="16" y1="2" y2="6" />
@@ -349,8 +330,6 @@ export const Sidebar = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-
-
               >
                 <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
                 <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
@@ -359,7 +338,27 @@ export const Sidebar = () => {
             </a>
           </li>
         </ul>
+        <div className="fixed bottom-14 left-24">
+          <button
+            onClick={handleLogout}
+            className="flex p-1 text-xl bg-slate-100 rounded-md"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                fillRule="evenodd"
+                d="M16.5 3.75a1.5 1.5 0 0 1 1.5 1.5v13.5a1.5 1.5 0 0 1-1.5 1.5h-6a1.5 1.5 0 0 1-1.5-1.5V15a.75.75 0 0 0-1.5 0v3.75a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V5.25a3 3 0 0 0-3-3h-6a3 3 0 0 0-3 3V9A.75.75 0 1 0 9 9V5.25a1.5 1.5 0 0 1 1.5-1.5h6ZM5.78 8.47a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 0 0 0 1.06l3 3a.75.75 0 0 0 1.06-1.06l-1.72-1.72H15a.75.75 0 0 0 0-1.5H4.06l1.72-1.72a.75.75 0 0 0 0-1.06Z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <h5 className="ml-2 font-medium">Log out</h5>
+          </button>
+        </div>
       </nav>
     </div>
-  );
-};
+  )
+}
