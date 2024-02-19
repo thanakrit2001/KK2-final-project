@@ -6,7 +6,7 @@ import { createBrowserRouter, Route, Navigate } from 'react-router-dom'
 import { Register } from '../views/Register'
 import { PageNotFound } from '../views/PageNotFound'
 
-import { isAuthenticated } from '../authUtils';
+import { isAuthenticated } from '../config/authUtils';
 
 const requireAuth = (element: React.ReactElement) => {
   return isAuthenticated() ? element : <Navigate to="/signin" />;

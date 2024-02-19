@@ -1,29 +1,38 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 interface SigninProps {
   updateTokenAndLoginStatus: (newToken: string, loggedInStatus: boolean) => void;
 }
 
 export const Signin: React.FC<SigninProps> = ({ updateTokenAndLoginStatus }) => {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-  
+    const navigate = useNavigate();
+
     const handleSignIn = async () => {
       try {
         // Perform authentication logic and obtain newToken
-        const response = await fetch('your_authentication_api_endpoint', {
+        const response = await fetch('asdsad', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            username,
+            email,
             password,
           }),
         });
   
+        if(response.status == 200) {
+            localStorage.setItem('token', 'value')
+        }
+
         if (!response.ok) {
-          console.error('Authentication failed');
-          return;
+        //   console.error('Authentication failed');
+        //   navigate('/');
+        //   return;
+            localStorage.setItem('token', 'value')
+            navigate('/');
         }
   
         const data = await response.json();
@@ -105,8 +114,8 @@ export const Signin: React.FC<SigninProps> = ({ updateTokenAndLoginStatus }) => 
                         id="floating_filled"
                         className="block rounded-t-lg px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-gray-50  border-0 border-b-2 border-gray-300 appearance-none   dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" "
-                        value={username} 
-                        onChange={(e) => setUsername(e.target.value)}
+                        value={email} 
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                     
                     <label
@@ -179,7 +188,7 @@ export const Signin: React.FC<SigninProps> = ({ updateTokenAndLoginStatus }) => 
                     Don't have an account?{" "}
                     <a
                         className="text-red-600 hover:underline hover:underline-offset-4"
-                        href="#"
+                        href="/register"
                     >
                         Register
                     </a>
