@@ -75,7 +75,7 @@ export const Register = () => {
             <h3 className="font-bold">Name:</h3>
             <input
               type="text"
-              placeholder="Your Name"
+              placeholder="Your name"
               className="w-3/4 mt-2 py-2 px-2 border rounded-md"
             />
             <br />
@@ -85,7 +85,7 @@ export const Register = () => {
             <h3 className="font-bold">Surname:</h3>
             <input
               type="text"
-              placeholder="Your Surname"
+              placeholder="Your surname"
               className="w-3/4 mt-2 py-2 px-2 border rounded-md"
             />
             <br />
@@ -113,6 +113,8 @@ export const Register = () => {
               type="password"
               id="pass"
               placeholder="Input your password again"
+              maxLength={16}
+              minLength={8}
               className={`w-3/4 mt-2 py-2 px-2 border rounded-md ${
                 password !== confirmPassword ? 'border-red-500' : ''
               }`}
@@ -135,6 +137,8 @@ export const Register = () => {
               type="password"
               id="pass"
               placeholder="Your password"
+              maxLength={16}
+              minLength={8}
               className={`w-3/4 mt-2 py-2 px-2 border rounded-md ${
                 password !== confirmPassword ? 'border-red-500' : ''
               }`}

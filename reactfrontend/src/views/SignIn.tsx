@@ -9,6 +9,7 @@ export const Signin: React.FC<SigninProps> = ({ updateTokenAndLoginStatus }) => 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    
 
     const handleSignIn = async () => {
         try {
@@ -197,7 +198,7 @@ export const Signin: React.FC<SigninProps> = ({ updateTokenAndLoginStatus }) => 
                     </label> */}
                     <input
                         id="floating_filled"
-                        className="block rounded-t-lg px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-gray-50  border-0 border-b-2 border-gray-300 appearance-none dark:text-white  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        className="block rounded-t-lg px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-gray-50  border-0 border-b-2 border-gray-300 appearance-none   dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         type="password"
                         placeholder=" "
                         value={password}

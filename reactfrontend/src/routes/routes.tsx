@@ -2,6 +2,7 @@ import { ListPatient } from '../views/Patiant/ListPatiant'
 import { Layout } from '../views/_Layout'
 import { DetailPatient } from '../views/Patiant/DetailPatient'
 import { Signin } from '../views/SignIn'
+import { Information } from '../views/Information'
 import { createBrowserRouter, Route, Navigate } from 'react-router-dom'
 import { Register } from '../views/Register'
 import { PageNotFound } from '../views/PageNotFound'
@@ -39,5 +40,9 @@ export const router = createBrowserRouter([
   {
     path: '/404',
     element: <PageNotFound />,
+  },
+  {
+    path: '/information',
+    element: <Information />,
   },
 ])
